@@ -1,0 +1,12 @@
+name: 'Tandem Performance'
+type: module
+description: 'Quick performance & PageSpeed wins from Tandem'
+core: 8.x
+package: 'Chenmed'
+core_version_requirement: ^8 || ^9
+
+dependencies:
+  - imageapi_optimize:imageapi_optimize
+  - imageapi_optimize_resmushit:imageapi_optimize_resmushit
+  - lazy:lazy
+  - webp:webp

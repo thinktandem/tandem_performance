@@ -1,0 +1,19 @@
+{
+  "name": "drupal/tandem_performance",
+  "type": "drupal-module",
+  "description": "Quick performance & PageSpeed wins from Tandem",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://github.com/thinktandem/tandem_performance",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://github.com/thinktandem/tandem_performance/issues",
+    "source": "https://github.com/thinktandem/tandem_performance"
+  },
+  "require": {
+    "drupal/imageapi_optimize": "^2.0",
+    "drupal/imageapi_optimize_resmushit": "1.x-dev",
+    "drupal/lazy": "^3.0",
+    "drupal/webp": "1.x-dev"
+  }
+}

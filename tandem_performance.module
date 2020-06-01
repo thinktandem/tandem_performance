@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Contains tandem_performance.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Asset\AttachedAssetsInterface;
+
+/**
+ * Implements hook_help().
+ */
+function tandem_performance_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the rmc_system module.
+    case 'help.page.tandem_performance':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Quick performance & PageSpeed wins from Tandem') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_page_preprocess_html().
+ */
+function tandem_performance_preprocess_html(&$vars) {
+  // Load up our domains to preconnect.
+  $preconnects = [
+    'https://www.googletagmanager.com',
+    'https://fonts.googleapis.com',
+    'https://vimeo.com',
+    'https://static.addtoany.com',
+  ];
+
+  foreach ($preconnects as $preconnect) {
+    $vars['page']['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'preconnect',
+          'href' => $preconnect,
+          'crossorigin' => TRUE,
+        ],
+      ],
+      $preconnect,
+    ];
+  }
+
+  // Load up all fonts as preload.
+  $fonts = [
+    '/themes/custom/tandemtheme/assets/webfonts/CocogoosePro-Regular/font.woff2',
+    '/themes/custom/tandemtheme/assets/webfonts/fa-brands-400.woff2',
+    '/themes/custom/tandemtheme/assets/webfonts/fa-solid-900.woff2',
+  ];
+
+  foreach ($fonts as $font) {
+    $type = strstr($font, '.');
+    $vars['page']['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'preload ',
+          'href' => $font,
+          'as' => 'font',
+          'type' => "font/" . ltrim($type, '.'),
+          'crossorigin' => TRUE,
+        ],
+      ],
+      $font,
+    ];
+  }
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function tandem_performance_js_alter(&$javascript, AttachedAssetsInterface $assets) {
+  // Async all JS footer with some exceptions.
+  foreach ($javascript as $name => &$js) {
+    $add = [
+      'https://static.addtoany.com/menu/page.js',
+    ];
+
+    if (!in_array($name, $add)) {
+      continue;
+    }
+
+    $js["attributes"] = [
+      'async' => "async",
+    ];
+  }
+}

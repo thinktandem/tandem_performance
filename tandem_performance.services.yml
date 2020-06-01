@@ -1,0 +1,6 @@
+services:
+  tandem_performance.asset_mods:
+    class: Drupal\tandem_performance\EventSubscriber\AssetModSubscriber
+    arguments: ['@router.admin_context', '@current_route_match']
+    tags:
+      - { name: event_subscriber }
