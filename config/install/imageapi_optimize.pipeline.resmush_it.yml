@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - imageapi_optimize_resmushit
+    - webp
+name: resmush_it
+label: 'ReSmush.it + WebP'
+processors:
+  6d064c5a-bf97-4aa8-a327-9b5b3b6c353c:
+    uuid: 6d064c5a-bf97-4aa8-a327-9b5b3b6c353c
+    id: resmushit
+    weight: 1
+    data:
+      quality: 70
+  995e5c75-7caa-48d1-a922-658f166e8426:
+    uuid: 995e5c75-7caa-48d1-a922-658f166e8426
+    id: webp_webp
+    weight: 2
+    data:
+      quality: '70'

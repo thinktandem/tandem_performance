@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: original_image_w_optimizations_
+label: 'Original Image (w/ Optimizations)'
+effects: {  }
+pipeline: resmush_it

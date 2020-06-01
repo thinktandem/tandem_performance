@@ -55,6 +55,7 @@ To get your images to be more performant do the following:
 3. Go to wherever your image fields are (media, content types, paragraphs, etc) and do the following:
 	- Change the image style to the corresponding responsive image style
 	- Check the lazy checkbox setting.
+    - If the image field is using the Original Image, switch the image style to Original Image (w/ Optimizations)
 
 This should allow all your images to lazy load, be compressed properly, and serve WebP variants of the image.
 
