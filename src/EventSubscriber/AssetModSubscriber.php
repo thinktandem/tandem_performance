@@ -69,6 +69,9 @@ class AssetModSubscriber implements EventSubscriberInterface {
     if (strpos($route, 'layout_builder') !== FALSE) {
       return TRUE;
     }
+    if (strpos($route, 'user') !== FALSE) {
+      return TRUE;
+    }
 
     return FALSE;
   }
