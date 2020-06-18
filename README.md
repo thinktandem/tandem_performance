@@ -38,6 +38,7 @@ You will need to manually edit your main site's composer.json as such:
 
 
 ```
+composer require oomphinc/composer-installers-extender
 composer require "bower-asset/lazysizes:5.1"
 ```
 
